@@ -93,7 +93,7 @@ function animate() {
     if (ir_direita == true) {
 
         c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
-        c.fillStyle = 'red'//cor de preenchimento do quadrado
+        c.fillStyle = 'white'//cor de preenchimento do quadrado
         c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
         pos_x_charles = pos_x_charles + velocidade_charles;
     }
@@ -101,14 +101,14 @@ function animate() {
     if (ir_direita == false) {
 
         c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
-        c.fillStyle = 'red'//cor de preenchimento do quadrado
+        c.fillStyle = 'white'//cor de preenchimento do quadrado
         c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
     }
 
     if (ir_esquerda == true) {
 
         c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
-        c.fillStyle = 'red'//cor de preenchimento do quadrado
+        c.fillStyle = 'white'//cor de preenchimento do quadrado
         c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
         pos_x_charles = pos_x_charles - velocidade_charles;
     }
@@ -116,20 +116,20 @@ function animate() {
     if (ir_esquerda == false) {
 
         c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
-        c.fillStyle = 'red'//cor de preenchimento do quadrado
+        c.fillStyle = 'white'//cor de preenchimento do quadrado
         c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
     }
 
     if (pular == true) {
 
         c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
-        c.fillStyle = 'red'//cor de preenchimento do quadrado
+        c.fillStyle = 'white'//cor de preenchimento do quadrado
         c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
         pos_y_charles = pos_y_charles - altura_do_pulo;
 
         setTimeout(function () {
             c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
-            c.fillStyle = 'red'//cor de preenchimento do quadrado
+            c.fillStyle = 'white'//cor de preenchimento do quadrado
             c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
             pos_y_charles = pos_y_charles + altura_do_pulo;
         }, 250)
@@ -192,7 +192,7 @@ function animate() {
     c.fill() // comando para iniciar o preenchimento da cor
 
     // desenho do Caleb
-    c.fillStyle = 'yellow'//cor de preenchimento do quadrado
+    c.fillStyle = '#757575'//cor de preenchimento do quadrado
     c.fillRect(pos_x_charles + lado_do_quadrado + 0.5 * lado_do_quadrado, pos_y_caleb, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
 
 }
