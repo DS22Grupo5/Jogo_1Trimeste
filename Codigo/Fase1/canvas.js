@@ -209,7 +209,7 @@ document.addEventListener('keyup', tecla_pular_solta, false);
 
 function tecla_pular_apertada(e) {
 
-    if (e.keyCode == 32) {
+    if (e.keyCode == 38) {
 
         pular = true
 
@@ -219,7 +219,7 @@ function tecla_pular_apertada(e) {
 function tecla_pular_solta(e) {
 
 
-    if (e.keyCode == 32) {
+    if (e.keyCode == 38) {
 
         pular = false
     }
