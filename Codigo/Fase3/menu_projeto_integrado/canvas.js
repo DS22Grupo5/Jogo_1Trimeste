@@ -152,6 +152,9 @@ function AnimateCenario(){
         alert('Perdeu uma vida')
         location.reload()
     }
+    if(big_boss_derrotado == true){
+        window.location.href = 'menu.html'
+    }
     if(colisao_tiro2 == true){
         cor_oponente2 = 'rgb(100, 150, 100)';
         oponente2_derrotado = true;
