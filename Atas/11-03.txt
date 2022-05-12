@@ -1,0 +1,3 @@
+Durante a aula de Narrativas Gamificadas, fizemos um arquivo contendo um resumo do jogo,
+quando começamos a desenvolver a história que seria utilizada, o nome e os diferencias, além de detalhes
+como classificação, público alvo e verbos. 

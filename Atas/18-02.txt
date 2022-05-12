@@ -1,0 +1,2 @@
+Durante a aula de Narrativas Gamificadas, fizemos um arquivo contendo os parâmetros básicos do jogo, tais como: 
+interface, imersão, controle, jogadores, gênero e qual a Preferência Apostólica Universal foi escolhida, utilizando o material disponibilizado pelo professor Taero. 
