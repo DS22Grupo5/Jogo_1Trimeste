@@ -1,0 +1,3 @@
+Funções:
+-Edição de vídeo (Computação Gráfica) 
+-Programação de fase (Desenvolvimento de Aplicativos e Linguagem de Programação)
