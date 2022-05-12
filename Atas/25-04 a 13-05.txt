@@ -1,0 +1,12 @@
+ Fizemos a divisão de tarefas para que o prazo pudesse ser cumprido e seguimos desenvolvendo durante as aulas técnicas . Foi feita da seguinte maneira:
+- Ana Cecília: documento 10 páginas (Narrativas Gamificadas),  apresentação de slides (Computação Gráfica) e Atas (GitHub)
+
+- Anna Carolina: documento 10 páginas (Narrativas Gamificadas),  apresentação de slides (Computação Gráfica) e Atas (GitHub)
+
+- Bruno Nunes: edição de vídeo (Computação Gráfica) e programação de fase (Desenvolvimento de Aplicativos e Linguagem de Programação)
+
+- Fábio: edição de vídeo (Computação Gráfica) e programação de fase (Desenvolvimento de Aplicativos e Linguagem de Programação)
+
+- Gabriel: edição de vídeo (Computação Gráfica) e programação de fase (Desenvolvimento de Aplicativos e Linguagem de Programação)
+
+- Pedro Nogueira: edição de vídeo (Computação Gráfica) e programação de fase (Desenvolvimento de Aplicativos e Linguagem de Programação)
