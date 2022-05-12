@@ -28,23 +28,23 @@ var x_tiro=5, y_tiro, colisao=false, cor_tiro = 'rgb(0, 0, 255)', x_atirar;
 var fator_somaX = 0;
 var y = canvas.height - 211
 var personagem_direita, personagem_esquerda, pulo, num_pulo;
-var cor_oponente1 = 'rgb(100, 100, 100)';
+var cor_oponente1 = '#7b7bb7';
 var plataforma = false;
 var x_porta = canvas.width-550;
-var cor_porta = "rgb(255, 255, 255)", porta_aberta=false;
+var cor_porta = "#ffffff70", porta_aberta=false;
 var borda1 = 5, borda2 = canvas.width - 300
 var colisao_oponente, colisao_tiro2
-var cor_oponente2 = 'rgb(100, 100, 100)', oponente2_derrotado = false;
+var cor_oponente2 = '#7b7bb7', oponente2_derrotado = false;
 var x_bigboss = 10, y_bigboss = canvas.height-(0.6*canvas.height+200), luta_bigboss
 var big_boss_acertado = 0; big_boss_derrotado = false;
 
 var c = canvas.getContext('2d');
 
 function CriarElementos(){
-    c.fillStyle = 'rgb(0, 255, 0)';
+    c.fillStyle = '#a900eb';
     c.fillRect(5, canvas.height-111, canvas.width - 50, 30);
 
-    c.fillStyle = 'rgb(255, 255, 0)';
+    c.fillStyle = '#a900eb'
     c.fillRect(5, canvas.height-0.6*canvas.height, (canvas.width-50), 30);
 
     //Porta metal
@@ -55,10 +55,10 @@ function CriarElementos(){
     c.fillRect(x_oponente1, canvas.height-201, 90, 90);
 
     //Big Boss
-    c.fillStyle = 'rgb(0, 255, 100)';
+    c.fillStyle = 'rgb(0, 0, 255)';
     c.fillRect(x_bigboss, y_bigboss, 200, 200);
 
-    c.fillStyle = 'rgb(255, 0, 0)';
+    c.fillStyle = 'rgb(255, 255, 255)';
     c.fillRect(x, y, 100,100);
 }
 
@@ -154,6 +154,7 @@ function AnimateCenario(){
     }
     if(big_boss_derrotado == true){
         window.location.href = 'menu.html'
+    
     }
     if(colisao_tiro2 == true){
         cor_oponente2 = 'rgb(100, 150, 100)';
@@ -227,14 +228,14 @@ function AnimateCenario(){
     }
     if(personagem_direita == true){
 
-        c.fillStyle = 'rgb(255, 0, 0)';
+        c.fillStyle = 'rgb(255, 255, 255)';
         c.fillRect(x, y, 100,100);
         x=x+5;
         x_tiro=x
     }
 
     if(personagem_esquerda == true){
-        c.fillStyle = 'rgb(255, 0, 0)';
+        c.fillStyle = 'rgb(255, 255, 255)';
         c.fillRect(x, y, 100,100);
         x=x-5;    
         x_tiro = x
