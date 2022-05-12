@@ -17,11 +17,16 @@ var comprimento_canvas = window.innerWidth
 var lado_do_quadrado = largura_canvas * 0.127591
 var raio_circulos = lado_do_quadrado * 0.4
 
-var pos_y_quadrado = (largura_canvas) * 0.9681 - lado_do_quadrado //Posição inicial no eixo vertical
-var pos_x_quadrado = (comprimento_canvas)  - lado_do_quadrado//Posição inicial no eixo horizontal
-var dx = 8; // velocidade dopersonagem
+var pos_y_charles = (largura_canvas) * 0.9681 - lado_do_quadrado //Posição inicial no eixo vertical
+var pos_x_charles = (comprimento_canvas) - lado_do_quadrado//Posição inicial no eixo horizontal
 
-var posy_plataforma = (largura_canvas) * 0.404 
+var pos_x_caleb = pos_x_charles - 40
+var pos_y_caleb = (largura_canvas) * 0.9681 - lado_do_quadrado
+
+
+var velocidade_charles = 8; // velocidade dopersonagem
+
+var posy_plataforma = (largura_canvas) * 0.404
 var altura_da_plataforma = (largura_canvas) * 0.9681 - posy_plataforma// em relação ao chao
 
 var altura_do_pulo = largura_canvas * 0.42
@@ -45,39 +50,41 @@ var cor_tomate = "#D64D53"
 
 function animate() {
 
-    console.log(pos_x_quadrado)
-    //    console.log(altura_da_plataforma)
+
     requestAnimationFrame(animate); //fica chamando a função animate
 
     //para colocar limite no lado direito do canvas
-    if(pos_x_quadrado>=(comprimento_canvas)  - lado_do_quadrado){
+    if (pos_x_charles >= (comprimento_canvas) - lado_do_quadrado) {
         ir_direita = false
+
     }
 
 
-    if(pos_x_quadrado<0){
+    if (pos_x_charles < 0) {
         ir_esquerda = false
     }
 
-    if (pos_x_quadrado < comprimento_canvas * 0.385 && pos_x_quadrado > (comprimento_canvas * 0.385 - (comprimento_canvas * 0.385 - comprimento_canvas * 0.3014))) { // para coletar o queijo
+    
+
+    if (pos_x_charles < comprimento_canvas * 0.385 && pos_x_charles > (comprimento_canvas * 0.385 - (comprimento_canvas * 0.385 - comprimento_canvas * 0.3014))) { // para coletar o queijo
         cor_queijo = 'transparent'
     }
 
-    if (pos_y_quadrado < largura_canvas * 0.67 && ((pos_x_quadrado+lado_do_quadrado) > (comprimento_canvas * 0.275 - 2 * raio_circulos)) && ((pos_x_quadrado-lado_do_quadrado) < (comprimento_canvas * 0.275-2*raio_circulos))) { // para coletar o queijo
+    if (pos_y_charles < largura_canvas * 0.67 && ((pos_x_charles + lado_do_quadrado) > (comprimento_canvas * 0.275 - 2 * raio_circulos)) && ((pos_x_charles - lado_do_quadrado) < (comprimento_canvas * 0.275 - 2 * raio_circulos))) { // para coletar o queijo
         cor_laranja = 'transparent'
     }
 
-    if (pos_y_quadrado < largura_canvas * 0.478 && ((pos_x_quadrado+lado_do_quadrado) > (comprimento_canvas * 0.173 - 2 * raio_circulos)) && ((pos_x_quadrado-lado_do_quadrado)< (comprimento_canvas * 0.173-2*raio_circulos))) { // para coletar o queijo
+    if (pos_y_charles < largura_canvas * 0.478 && ((pos_x_charles + lado_do_quadrado) > (comprimento_canvas * 0.173 - 2 * raio_circulos)) && ((pos_x_charles - lado_do_quadrado) < (comprimento_canvas * 0.173 - 2 * raio_circulos))) { // para coletar o queijo
         cor_cereja = 'transparent'
     }
 
-    if (pos_y_quadrado < largura_canvas * 0.8771 && ((pos_x_quadrado+lado_do_quadrado)> (comprimento_canvas * 0.173 - 2 * raio_circulos)) && ((pos_x_quadrado-lado_do_quadrado) < (comprimento_canvas * 0.173-2*raio_circulos))) { // para coletar o queijo
+    if (pos_y_charles < largura_canvas * 0.8771 && ((pos_x_charles + lado_do_quadrado) > (comprimento_canvas * 0.173 - 2 * raio_circulos)) && ((pos_x_charles - lado_do_quadrado) < (comprimento_canvas * 0.173 - 2 * raio_circulos))) { // para coletar o queijo
         cor_tomate = 'transparent'
     }
 
-    if(cor_cereja=='transparent' && cor_laranja=='transparent' && cor_tomate=='transparent' && cor_queijo=='transparent' && fase_completa==false && (pos_x_quadrado>=(comprimento_canvas)  - lado_do_quadrado) ){
-        fase_completa=true
-        alert('Fase 1 concluida')
+    if (cor_cereja == 'transparent' && cor_laranja == 'transparent' && cor_tomate == 'transparent' && cor_queijo == 'transparent' && fase_completa == false && (pos_x_charles >= (comprimento_canvas) - lado_do_quadrado)) {
+        fase_completa = true
+        alert('Parabéns você coletou todos os suprimentos!!!')
 
     }
 
@@ -87,44 +94,44 @@ function animate() {
 
         c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
         c.fillStyle = 'red'//cor de preenchimento do quadrado
-        c.fillRect(pos_x_quadrado, pos_y_quadrado, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
-        pos_x_quadrado = pos_x_quadrado + dx;
+        c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
+        pos_x_charles = pos_x_charles + velocidade_charles;
     }
 
     if (ir_direita == false) {
 
         c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
         c.fillStyle = 'red'//cor de preenchimento do quadrado
-        c.fillRect(pos_x_quadrado, pos_y_quadrado, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
+        c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
     }
 
     if (ir_esquerda == true) {
 
         c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
         c.fillStyle = 'red'//cor de preenchimento do quadrado
-        c.fillRect(pos_x_quadrado, pos_y_quadrado, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
-        pos_x_quadrado = pos_x_quadrado - dx;
+        c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
+        pos_x_charles = pos_x_charles - velocidade_charles;
     }
 
     if (ir_esquerda == false) {
 
         c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
         c.fillStyle = 'red'//cor de preenchimento do quadrado
-        c.fillRect(pos_x_quadrado, pos_y_quadrado, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
+        c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
     }
 
     if (pular == true) {
 
         c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
         c.fillStyle = 'red'//cor de preenchimento do quadrado
-        c.fillRect(pos_x_quadrado, pos_y_quadrado, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
-        pos_y_quadrado = pos_y_quadrado - altura_do_pulo;
+        c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
+        pos_y_charles = pos_y_charles - altura_do_pulo;
 
         setTimeout(function () {
             c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
             c.fillStyle = 'red'//cor de preenchimento do quadrado
-            c.fillRect(pos_x_quadrado, pos_y_quadrado, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
-            pos_y_quadrado = pos_y_quadrado + altura_do_pulo;
+            c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
+            pos_y_charles = pos_y_charles + altura_do_pulo;
         }, 250)
 
         pular = false
@@ -184,6 +191,9 @@ function animate() {
     c.fillStyle = cor_tomate//cor para cobrir a área do círculo 
     c.fill() // comando para iniciar o preenchimento da cor
 
+    // desenho do Caleb
+    c.fillStyle = 'yellow'//cor de preenchimento do quadrado
+    c.fillRect(pos_x_charles + lado_do_quadrado + 0.5 * lado_do_quadrado, pos_y_caleb, lado_do_quadrado, lado_do_quadrado); //serve para falar as dimensões
 
 }
 
