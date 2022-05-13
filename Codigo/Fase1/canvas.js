@@ -11,8 +11,30 @@ var inicio = true
 var pular = false
 var fase_completa = false
 
-var largura_canvas = window.innerHeight
-var comprimento_canvas = window.innerWidth
+
+
+
+
+
+    try {
+       
+        var largura_canvas = window.innerHeight
+        var comprimento_canvas = window.innerWidth
+         
+    }
+
+    catch {
+        console.log("tamanho do monitor não capturado")
+        largura_canvas = 627
+        comprimento_canvas = 1325
+        
+    }
+
+    
+
+
+
+
 
 var lado_do_quadrado = largura_canvas * 0.127591
 var raio_circulos = lado_do_quadrado * 0.4
@@ -46,8 +68,6 @@ var cor_tomate = "#D64D53"
 
 
 
-
-
 function animate() {
 
 
@@ -64,7 +84,7 @@ function animate() {
         ir_esquerda = false
     }
 
-    
+
 
     if (pos_x_charles < comprimento_canvas * 0.385 && pos_x_charles > (comprimento_canvas * 0.385 - (comprimento_canvas * 0.385 - comprimento_canvas * 0.3014))) { // para coletar o queijo
         cor_queijo = 'transparent'
