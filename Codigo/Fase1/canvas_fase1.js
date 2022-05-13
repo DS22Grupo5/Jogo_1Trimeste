@@ -7,7 +7,6 @@ var c = canvas.getContext('2d') // c é pincel do canva, ou seja o 'super object
 //Variáveis de controle de ação
 var ir_direita = false
 var ir_esquerda = false
-var inicio = true
 var pular = false
 var fase_completa = false
 
@@ -67,7 +66,7 @@ function animate() {
 
 
     //Se o queijo for coletado
-    if (pos_x_charles < comprimento_canvas * 0.385 && pos_x_charles > (comprimento_canvas * 0.385 - (comprimento_canvas * 0.385 - comprimento_canvas * 0.3014))) { // para coletar o queijo
+    if (pos_x_charles < comprimento_canvas * 0.385 && pos_x_charles > (comprimento_canvas * 0.385 - (comprimento_canvas * 0.385 - comprimento_canvas * 0.3014))) { 
         cor_queijo = 'transparent'
     }
     //Se a laranja for coletada
@@ -106,7 +105,7 @@ function animate() {
    }
 
    if (ir_esquerda == true) {
-       // para o charles quando a tecla é solta
+       // para fazer o movimento para esquerda
        c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
        c.fillStyle = cor_charles//cor de preenchimento do quadrado
        c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado) //serve para falar as dimensões
@@ -122,13 +121,13 @@ function animate() {
 
    
     if (pular == true) {
-
+        //para fazer o pulo do charles
         c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
         c.fillStyle = cor_charles//cor de preenchimento do quadrado
         c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado) //serve para falar as dimensões
         pos_y_charles = pos_y_charles - altura_do_pulo
 
-        setTimeout(function () {
+        setTimeout(function () {// espera 250 milisegundos para executar o a função de voltar para a posição antes de fazer o pulo
             c.clearRect(0, 0, innerWidth, innerHeight)//(x,y, onde terminax, onde terminay) // Limpa a tela
             c.fillStyle = cor_charles//cor de preenchimento do quadrado
             c.fillRect(pos_x_charles, pos_y_charles, lado_do_quadrado, lado_do_quadrado) //serve para falar as dimensões
@@ -139,6 +138,7 @@ function animate() {
 
     }
 
+    //DESENHO DOS ELEMENTOS ESTÁTICOS
 
     // Desenho do queijo
     c.beginPath()
