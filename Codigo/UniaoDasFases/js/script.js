@@ -3,7 +3,9 @@ var botoes_criados = false;
 function Comecar(){
     window.location.href = 'fase1.html'
 }
-
+function VoltarMenu(){
+    window.location.href = 'menu.html'
+}
 function Fase1(){
     window.location.href = 'fase1.html'
 }
@@ -91,8 +93,9 @@ function Sair(){
         return false;
 }
 function ComecarFase2(){
-    window.location.href='fase3.html'
+    window.location.href='fase2.html'
 }
 function ComecarFase3(){
     window.location.href='fase3.html'
 }
+

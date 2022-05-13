@@ -18,27 +18,26 @@ for(var i=0; i<9; i++){
     }
 }
 
-var y_atirar;
-var atirar = false;
-var x = 10;
-var y = canvas.height - 211;
-var x_oponente1 = canvas.width - posicao_oponente, x_oponente2 = 150;
+
+//Variaveis de posicionamento
+
+var y_atirar, x = 10, y = canvas.height - 211, x_oponente1 = canvas.width - posicao_oponente, x_oponente2 = 150, x_atirar,
+    x_tiro=5, y_tiro, x_porta = canvas.width-550, borda1 = 5, borda2 = canvas.width - 300, x_bigboss = 10, y_bigboss = canvas.height-(0.6*canvas.height+200);
+
+
+//VARIÁVEIS DE DECISÃO
+var luta_bigboss=false, atirar = false, colisao_tiro1=false , personagem_direita=false, personagem_esquerda=false, pulo=false, plataforma = false, vida=0,
+    porta_aberta=false, colisao_oponente, colisao_tiro2=false, oponente2_derrotado = false, big_boss_derrotado = false, big_boss_acertado = false;
+
+//VARIÁVEIS DE COR
+
+var cor_tiro = 'rgb(0, 0, 255)',cor_oponente1 = '#7b7bb7',   
+    cor_porta = "#ffffff70", cor_oponente2 = '#7b7bb7';
+
+// var fator_somaX = 0;
+var num_pulo;
+ 
 var fator_soma = 5;
-var x_tiro=5, y_tiro, colisao=false, cor_tiro = 'rgb(0, 0, 255)', x_atirar;
-var fator_somaX = 0;
-var y = canvas.height - 211
-var personagem_direita, personagem_esquerda, pulo, num_pulo;
-var cor_oponente1 = '#7b7bb7';
-var plataforma = false;
-var x_porta = canvas.width-550;
-var cor_porta = "#ffffff70", porta_aberta=false;
-var borda1 = 5, borda2 = canvas.width - 300
-var colisao_oponente, colisao_tiro2
-var cor_oponente2 = '#7b7bb7', oponente2_derrotado = false;
-var x_bigboss = 10, y_bigboss = canvas.height-(0.6*canvas.height+200), luta_bigboss
-var big_boss_acertado = 0; big_boss_derrotado = false;
-var vida=0;
-var cor_barra1 = 'rgb(0,255, 0)', cor_barra2 = 'rgb(0, 255, 0)', cor_barra3 = 'rgb(0,255, 0)'
 
 var c = canvas.getContext('2d');
 
@@ -63,20 +62,7 @@ function CriarElementos(){
     c.fillStyle = 'rgb(255, 255, 255)';
     c.fillRect(x, y, 100,100);
 
-    //Vidas
-    c.fillStyle = cor_barra1
-    c.fillRect(1.4*canvas.height, 5, 50, 10)
 
-    c.fillStyle = cor_barra2
-    c.fillRect(1.5*canvas.height, 5, 50, 10)
-
-    c.fillStyle = cor_barra3
-    c.fillRect(1.6*canvas.height, 5, 50, 10)
-}
-
-function FatorSoma(){
-    var fator_somaX = 5
-    return fator_somaX;
 }
 
 function Pular(){
@@ -88,7 +74,6 @@ function Pular(){
         y = canvas.height-(0.6*canvas.height-100)
         setTimeout(function(){
             y = canvas.height-211
-
         },500)
     } 
     if(plataforma == true){
@@ -104,7 +89,6 @@ function CriarNitanerBigBoss(){
     c.fillRect(x_oponente2, canvas.height-(0.6*canvas.height+90), 90, 90);
 
     x_oponente2 = x_oponente2 + 5
-    
 }
 
 function AnimateCenario(){
@@ -123,9 +107,9 @@ function AnimateCenario(){
         x_tiro=x_tiro+25 
         y_tiro = y_atirar;
         if(x_tiro == x_oponente1 || x_tiro == x_oponente1 - 5 || x_tiro == x_oponente1 + 5 || x_tiro == x_oponente1 - 10 || x_tiro == x_oponente1 + 10|| x_tiro == x_oponente1 - 15 || x_tiro == x_oponente1 + 15 || x_tiro == x_oponente1 - 20 || x_tiro == x_oponente1 + 20 || x_tiro == x_oponente1 - 25 || x_tiro == x_oponente1 + 25){
-            colisao = true; 
+            colisao_tiro1 = true; 
             x_tiro = x
-            atirar = false
+            atirar = false 
         }
         
     }
@@ -154,18 +138,19 @@ function AnimateCenario(){
             big_boss_acertado = big_boss_acertado+1
             if(big_boss_acertado == 2){
                 big_boss_derrotado = true
-                alert('big boss derrotado')
+                alert('Francis derrotado')
             }
             x_tiro = x
             atirar = false
         }
     }
     if((x == x_bigboss || x == x_bigboss - 5 || x == x_bigboss + 5 || x == x_bigboss - 10 || x == x_bigboss + 10|| x == x_bigboss - 15 || x == x_bigboss + 15 || x == x_bigboss - 20 || x == x_bigboss + 20 || x == x_bigboss - 25 || x == x_bigboss + 25) && plataforma == true && big_boss_derrotado == false){
-        alert('Ah não, você foi derrotado pelo big boss')
+        alert('Ah não, você foi derrotado pelo Francis')
         location.reload()
     }
     if(big_boss_derrotado == true){
-        window.location.href = 'menu.html'
+
+        window.location.href = 'voltar_menu.html'
     
     }
     if(colisao_tiro2 == true){
@@ -198,22 +183,12 @@ function AnimateCenario(){
     }
     if((x == x_oponente1 || x == x_oponente1 - 5 || x == x_oponente1 + 5) && y == canvas.height - 211){
         colisao_oponente = true
-        cor_barra1 = 'rgb(255, 0, 0)'
         personagem_direita = false
         personagem_esquerda = false
-        vida = vida + 1
         x = 5
         x_oponente1 = canvas.width - posicao_oponente
     }
-    if(vida == 2){
-        cor_barra2 = 'rgb(255, 0, 0)'
-    }
-    else if(vida == 3){
-        cor_barra3 = 'rgb(255, 0, 0)'
-        alert('Você perdeu!')
-        vida = 0
-        location.reload()
-    }
+    
     if(colisao_oponente == true){
         colisao_oponente = false
     }
@@ -230,7 +205,7 @@ function AnimateCenario(){
         y_atirar = canvas.height - 161
     }
     
-    if(colisao == true){
+    if(colisao_tiro1 == true){
         cor_oponente1 = 'rgb(150, 255, 150)'
         x_oponente1 = x_oponente1
         setTimeout(function(){
@@ -240,7 +215,7 @@ function AnimateCenario(){
         x_porta = canvas.width - 550   
     }
     else{
-        colisao = false
+        colisao_tiro1 = false
         if(x_oponente1 >= canvas.width - 110){
             fator_soma = -5;
         }
