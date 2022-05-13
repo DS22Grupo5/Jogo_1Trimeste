@@ -20,6 +20,11 @@ var andar_personagem = 0
 var velocidade_pers = 6
 var altura_personagem = (Altura) * 0.342
 var lado_pers = (Largura) * 0.054
+var cor_pers = "white"
+
+// VARIÁVEIS FASE
+var fase_completa = false
+
 
 function ObjEst() {
   // CRIANDO OBJETOS ESTÁTICOS
@@ -27,23 +32,23 @@ function ObjEst() {
   ctx.fillStyle = '#7b7bb7'; // COR DO NITANER
   ctx.fillRect(andar_nitaner, (Altura) * 0.837, (Largura) * 0.036, (Altura) * 0.159); //NITANER
 
-  ctx.fillStyle = 'white'; // COR DO PERSONAGEM PRINCIPAL
+  ctx.fillStyle = cor_pers; // COR DO PERSONAGEM PRINCIPAL
   ctx.fillRect(andar_personagem, altura_personagem, lado_pers, (Altura) * 0.114); //PERSONAGEM PRINCIPAL
 
-  ctx.fillStyle = 'yellow'; // COR DO PRÉDIO 1
+  ctx.fillStyle = '#4F2729'; // COR DO PRÉDIO 1
   ctx.fillRect(0, (Altura) * 0.456, (Largura) * 0.183, (Altura) * 0.030); //PRÉDIO 1 
 
-  ctx.fillStyle = 'red'; // COR DO PRÉDIO 2
+  ctx.fillStyle = '#54452C'; // COR DO PRÉDIO 2
   ctx.fillRect((Largura) * 0.198, (Altura) * 0.509, (Largura) * 0.128, (Altura) * 0.038); //PRÉDIO 2
 
-  ctx.fillStyle = 'orange'; // COR DO PRÉDIO 3, ONDE O PERSONAGEM ENTRA
+  ctx.fillStyle = '#380103'; // COR DO PRÉDIO 3, ONDE O PERSONAGEM ENTRA
   ctx.fillRect((Largura) * 0.360, (Altura) * 0.380, (Largura) * 0.164, (Altura) * 0.053); //PRÉDIO 3, ONDE O PERSONAGEM ENTRA 
 
-  ctx.fillStyle = 'purple'; // COR DA LOJA 
+  ctx.fillStyle = '#40425F'; // COR DA LOJA 
   ctx.fillRect((Largura) * 0.551, (Altura) * 0.608, (Largura) * 0.237, (Altura) * 0.068); //LOJA 
 
-  ctx.fillStyle = 'pink'; // COR DO PRÉDIO 4, Ñ TERÁ INTERAÇÃO
-  ctx.fillRect((Largura) * 0.805, (Altura) * 0.152, (Largura) * 0.219, (Altura) * 0.015); // PRÉDIO 4, Ñ HAVERÁ INTERAÇÃO
+  ctx.fillStyle = '#80776A'; // COR DO PRÉDIO 4, Ñ TERÁ INTERAÇÃO
+  ctx.fillRect((Largura) * 0.870, (Altura) * 0.152, (Largura) * 0.219, (Altura) * 0.015); // PRÉDIO 4, Ñ HAVERÁ INTERAÇÃO
 }
 
 
@@ -68,29 +73,35 @@ function CenarioAnimado() {
   if (andar_personagem > (Largura) * 0.179) {
     altura_personagem = (Altura) * 0.395 // IMPORTANTE PARA COLOCAR A ALTURA DA PLATAFORMA VERMELHA
     ctx.clearRect(0, 0, innerWidth, innerHeight)
-    ctx.fillStyle = 'white'; // COR DO PERSONAGEM PRINCIPAL
+    ctx.fillStyle = cor_pers; // COR DO PERSONAGEM PRINCIPAL
     ctx.fillRect(andar_personagem, altura_personagem, (Largura) * 0.054, (Altura) * 0.114); //PERSONAGEM PRINCIPAL
 
   }
 
-  
+
   if (andar_personagem > (Largura) * 0.292) {
     altura_personagem = (Altura) * 0.266
   }
 
-  if(andar_personagem > (Largura)* 0.497){
-    altura_personagem = (Altura)* 0.494
-  
+  if (andar_personagem > (Largura) * 0.497) {
+    altura_personagem = (Altura) * 0.494
+
   }
 
+  if (andar_personagem > (Largura)*0.585 && fase_completa == false) {
+    alert("VOCÊ PASSOU DE FASE!")
+    fase_completa = true
+    andar_direita = false
+    cor_pers = 'transparent'
+    
+  }
 
   if (andar_direita == true) {
     ctx.clearRect(0, 0, innerWidth, innerHeight)
-    ctx.fillStyle = 'white'; // COR DO PERSONAGEM PRINCIPAL
+    ctx.fillStyle = cor_pers; // COR DO PERSONAGEM PRINCIPAL
     ctx.fillRect(andar_personagem, altura_personagem, (Largura) * 0.054, (Altura) * 0.114); //PERSONAGEM PRINCIPAL
     andar_personagem = andar_personagem + velocidade_pers;
-    console.log(andar_personagem)
-    console.log(altura_personagem)
+    
 
 
   }
@@ -99,14 +110,14 @@ function CenarioAnimado() {
 
   if (andar_direita == false) {
     ctx.clearRect(0, 0, innerWidth, innerHeight)
-    ctx.fillStyle = 'white'; // COR DO PERSONAGEM PRINCIPAL
+    ctx.fillStyle = cor_pers; // COR DO PERSONAGEM PRINCIPAL
     ctx.fillRect(andar_personagem, altura_personagem, (Largura) * 0.054, (Altura) * 0.114); //PERSONAGEM PRINCIPAL
 
   }
 
   if (andar_esquerda == true) {
     ctx.clearRect(0, 0, innerWidth, innerHeight)
-    ctx.fillStyle = 'white'; // COR DO PERSONAGEM PRINCIPAL
+    ctx.fillStyle = cor_pers; // COR DO PERSONAGEM PRINCIPAL
     ctx.fillRect(andar_personagem, altura_personagem, (Largura) * 0.054, (Altura) * 0.114); //PERSONAGEM PRINCIPAL
     andar_personagem = andar_personagem - velocidade_pers;
 
@@ -115,7 +126,7 @@ function CenarioAnimado() {
 
   if (andar_esquerda == false) {
     ctx.clearRect(0, 0, innerWidth, innerHeight)
-    ctx.fillStyle = 'white'; // COR DO PERSONAGEM PRINCIPAL
+    ctx.fillStyle = cor_pers; // COR DO PERSONAGEM PRINCIPAL
     ctx.fillRect(andar_personagem, altura_personagem, (Largura) * 0.054, (Altura) * 0.114); //PERSONAGEM PRINCIPAL
 
 
