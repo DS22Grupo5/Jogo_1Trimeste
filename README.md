@@ -3,10 +3,12 @@ Repositório do Grupo 05 para o jogo que será feito durante o primeiro trimestr
 
 ## Capa do jogo em produção
 
-![Atividade Avaliativa Grupo 05](https://user-images.githubusercontent.com/90159649/159916344-6b517f6d-d08f-47a3-90b3-ba12586b1b44.jpg)
+![Atividade Avaliativa Grupo 05](https://user-images.githubusercontent.com/96485913/168273929-7a7fdae8-4ee5-4aee-bced-4d34c5a19a7b.jpg)
+
 
 ## Prévia da história
 
-### Sinto-me puxado pelo interior da fonte luminosa e, em um piscar de olhos, me vejo de volta ao meu antigo consultório e agora me resta a dúvida: como conseguirei evitar um conflito global? Uma coisa é certa, Caleb é o único que pode me ajudar.  
+### Após um engenheiro nuclear utilizar a arma radioativa desenvolvida no seu laboratório, gerou-se um desastre transformando os indivíduos em seres irracionais, conhecidos como Nitaners. O único que sabia dessa arma era Caleb, que conta ao seu psiquiatra, Charles, e agora a dupla precisa curar os seres, evitando que a arma seja lançada, voltando ao passado. 
+### O caminho não vai ser fácil, quais desafios eles encontrarão?
 
 
