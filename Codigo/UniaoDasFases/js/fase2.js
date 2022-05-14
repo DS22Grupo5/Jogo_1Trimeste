@@ -4,8 +4,21 @@ var canvas = document.querySelector('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var ctx = canvas.getContext('2d');
-var Largura = window.innerWidth
-var Altura = window.innerHeight
+
+
+try {
+
+  var Altura = window.innerHeight
+  var Largura = window.innerWidth
+
+}
+
+catch {
+  
+  var Largura = 1366
+  var Altura = 657
+
+}
 
 // VARIÁVEIS NITANER 
 var andar_nitaner = (Largura) * 0.146
