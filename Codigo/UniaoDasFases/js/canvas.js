@@ -1,6 +1,3 @@
-//ERRO: VELOCIDADE DO OBJETO
-//FALTA: FINALIZAR OUTRAS ETAPAS DA FASE
-
 var canvas = document.querySelector('canvas');
 
 canvas.width = window.innerWidth;
@@ -9,21 +6,27 @@ canvas.height = window.innerHeight;
 var posicao_oponente;
 
 for(var i=0; i<9; i++){
-    console.log('for')
     posicao = canvas.width - (500 + i)
     if(posicao % 5 == 0){
-        console.log('teste')
         posicao_oponente = 500 + i
         break
     }
 }
 
-
 //Variaveis de posicionamento
 
-var y_atirar, x = 10, y = canvas.height - 211, x_oponente1 = canvas.width - posicao_oponente, x_oponente2 = 150, x_atirar,
-    x_tiro=5, y_tiro, x_porta = canvas.width-550, borda1 = 5, borda2 = canvas.width - 300, x_bigboss = 10, y_bigboss = canvas.height-(0.6*canvas.height+200);
+var y_atirar, x = 10, y = canvas.height - 211, x_oponente1 = canvas.width - posicao_oponente, x_oponente2 = 150, x_atirar, borda2,
+    x_tiro=5, y_tiro, x_porta = canvas.width-550, borda1 = 5, x_bigboss = 10, y_bigboss = canvas.height-(0.6*canvas.height+200), subtracao;
 
+
+function LimiteBorda2(){
+    if((0.26*canvas.width)%5 != 0){
+        subtracao = 0.26*canvas.width - ((0.26*canvas.width)%5)
+    }
+    borda2=canvas.width-(posicao_oponente-subtracao)
+}
+
+LimiteBorda2()
 
 //VARIÁVEIS DE DECISÃO
 var luta_bigboss=false, atirar = false, colisao_tiro1=false , personagem_direita=false, personagem_esquerda=false, pulo=false, plataforma = false, vida=0,
@@ -33,22 +36,20 @@ var luta_bigboss=false, atirar = false, colisao_tiro1=false , personagem_direita
 
 var cor_tiro = 'rgb(0, 0, 255)',cor_oponente1 = '#7b7bb7',   
     cor_porta = "#ffffff70", cor_oponente2 = '#7b7bb7';
-
-// var fator_somaX = 0;
-var num_pulo;
  
 var fator_soma = 5;
 
 var c = canvas.getContext('2d');
 
 function CriarElementos(){
+    //PLATAFORMAS
     c.fillStyle = '#a900eb';
     c.fillRect(5, canvas.height-111, canvas.width - 50, 30);
 
     c.fillStyle = '#a900eb'
     c.fillRect(5, canvas.height-0.6*canvas.height, (canvas.width-50), 30);
 
-    //Porta metal
+    //PORTA
     c.fillStyle = cor_porta;
     c.fillRect(x_porta, canvas.height-0.6*canvas.height, canvas.width-1100, 30);
     
@@ -98,11 +99,17 @@ function AnimateCenario(){
     
     requestAnimationFrame(AnimateCenario);
 
+    if(x==borda1){
+        personagem_esquerda=false;
+    }else if(x==borda2 || x==borda2+5 || x==borda2-5){
+        personagem_direita=false;
+
+    }
+
     if(atirar == true && plataforma == false){
        
         c.fillStyle = cor_tiro;
         c.fillRect(x_tiro, y_tiro, 20,20);
-        console.log(x_tiro, x_oponente1)
 
         x_tiro=x_tiro+25 
         y_tiro = y_atirar;
@@ -116,7 +123,6 @@ function AnimateCenario(){
     else if(atirar == true && plataforma == true){
         c.fillStyle = cor_tiro;
         c.fillRect(x_tiro, y_tiro, 20,20);
-        console.log(x_tiro, x_oponente1)
     
         x_tiro=x_tiro-25
         y_tiro = y_atirar;
@@ -124,40 +130,34 @@ function AnimateCenario(){
             colisao_tiro2 = true; 
             x_tiro = x
             atirar = false
+            cor_oponente2 = 'rgb(100, 150, 100)';
+            oponente2_derrotado = true;
+            alert('Chegou o momento de enfrentar o Francis, se ele te acertar você será derrotado, são necessários dois tiros de cura para derrotá-lo')
+    
         }
         
     }
     if(luta_bigboss == true && atirar == true){
         c.fillStyle = cor_tiro;
         c.fillRect(x_tiro, y_tiro, 20,20);
-        console.log(x_tiro, x_oponente1)
     
         x_tiro=x_tiro-25
         y_tiro = y_atirar;
         if(x_tiro == x_bigboss || x_tiro == x_bigboss - 5 || x_tiro == x_bigboss + 5 || x_tiro == x_bigboss - 10 || x_tiro == x_bigboss + 10|| x_tiro == x_bigboss - 15 || x_tiro == x_bigboss + 15 || x_tiro == x_bigboss - 20 || x_tiro == x_bigboss + 20 || x_tiro == x_bigboss - 25 || x_tiro == x_bigboss + 25){
             big_boss_acertado = big_boss_acertado+1
+            x_tiro = x
+            atirar = false
             if(big_boss_acertado == 2){
                 big_boss_derrotado = true
                 alert('Francis derrotado')
+                window.location.href = 'voltar_menu.html'
             }
-            x_tiro = x
-            atirar = false
+            
         }
     }
     if((x == x_bigboss || x == x_bigboss - 5 || x == x_bigboss + 5 || x == x_bigboss - 10 || x == x_bigboss + 10|| x == x_bigboss - 15 || x == x_bigboss + 15 || x == x_bigboss - 20 || x == x_bigboss + 20 || x == x_bigboss - 25 || x == x_bigboss + 25) && plataforma == true && big_boss_derrotado == false){
         alert('Ah não, você foi derrotado pelo Francis')
         location.reload()
-    }
-    if(big_boss_derrotado == true){
-
-        window.location.href = 'voltar_menu.html'
-    
-    }
-    if(colisao_tiro2 == true){
-        cor_oponente2 = 'rgb(100, 150, 100)';
-        oponente2_derrotado = true;
-        alert('Chegou o momento de enfrentar o Francis, se ele te acertar você será derrotado, são necessários dois tiros de cura para derrotá-lo')
-
     }
     if(x_oponente2 >= canvas.width - 110 || colisao_tiro2 == true){
         luta_bigboss = true
@@ -170,32 +170,20 @@ function AnimateCenario(){
         }, 2000)
     }
     if(oponente2_derrotado == false && plataforma==true){
-        console.log('personagem não derrotado')
         if((x == x_oponente2 || x == x_oponente2 - 5 || x == x_oponente2 + 5) && y == canvas.height-(0.6*canvas.height+100)){
-            console.log('colisão oponente')
             x_oponente2 = 150
             vida = vida+1
-            colisao_oponente = true
-            cor_barra1 = 'rgb(255, 0, 0)'
             personagem_direita = false
             personagem_esquerda = false
         }
     }
     if((x == x_oponente1 || x == x_oponente1 - 5 || x == x_oponente1 + 5) && y == canvas.height - 211){
-        colisao_oponente = true
         personagem_direita = false
         personagem_esquerda = false
         x = 5
         x_oponente1 = canvas.width - posicao_oponente
     }
     
-    if(colisao_oponente == true){
-        colisao_oponente = false
-    }
-    if(plataforma == true && y == canvas.height - 400 && x <= canvas.width - (canvas.width - 5)){
-        y = canvas.height - 211;
-        plataforma = false
-    }
     if(plataforma == true){
         cor_porta = 'rgb(100, 100, 100)'
         y_atirar = canvas.height - (0.6*canvas.height+50)
@@ -224,7 +212,6 @@ function AnimateCenario(){
         }
     
         x_oponente1 = x_oponente1 + fator_soma;
-        // cor_tiro = 'rgb(0, 0, 255)'
     }
     if(personagem_direita == true){
 
@@ -252,7 +239,6 @@ document.addEventListener('keydown', keyRight, false)
 document.addEventListener('keyup', keyRightSolta, false)
 
 document.addEventListener('keydown', keySpace, false)
-// document.addEventListener('keyup', keySpaceSolta, false)
 
 document.addEventListener('keydown', keyLeft, false)
 document.addEventListener('keyup', keyLeftSolta, false)
