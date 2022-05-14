@@ -1,7 +1,15 @@
 var canvas = document.querySelector('canvas');
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+try{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+}
+catch{
+    canvas.width = 1325;
+    canvas.height = 627;
+
+}
 
 var posicao_oponente;
 
@@ -38,6 +46,7 @@ var cor_tiro = 'rgb(0, 0, 255)',cor_oponente1 = '#7b7bb7',
     cor_porta = "#ffffff70", cor_oponente2 = '#7b7bb7';
  
 var fator_soma = 5;
+var vida = 0;
 
 var c = canvas.getContext('2d');
 
@@ -180,6 +189,7 @@ function AnimateCenario(){
     if((x == x_oponente1 || x == x_oponente1 - 5 || x == x_oponente1 + 5) && y == canvas.height - 211){
         personagem_direita = false
         personagem_esquerda = false
+        vida = vida+1
         x = 5
         x_oponente1 = canvas.width - posicao_oponente
     }
@@ -192,7 +202,11 @@ function AnimateCenario(){
     else if(plataforma == false){
         y_atirar = canvas.height - 161
     }
-    
+    if(vida == 3){
+        alert('Você perdeu as suas três vidas!')
+        vida = 0
+        location.reload()
+    }
     if(colisao_tiro1 == true){
         cor_oponente1 = 'rgb(150, 255, 150)'
         x_oponente1 = x_oponente1

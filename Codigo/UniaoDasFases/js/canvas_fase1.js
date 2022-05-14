@@ -85,6 +85,7 @@ function animate() {
     if (cor_cereja == 'transparent' && cor_laranja == 'transparent' && cor_tomate == 'transparent' && cor_queijo == 'transparent' && fase_completa == false && (pos_x_charles >= (comprimento_canvas) - lado_do_quadrado)) {
         fase_completa = true
         alert('Parabéns você coletou todos os suprimentos!!!')
+        window.location.href = 'comecar_fase2.html'
 
     }
 
